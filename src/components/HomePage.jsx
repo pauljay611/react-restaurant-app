@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Table } from 'react-bootstrap';
 import restaurantApi from '../api/index'
+import Columns from './Columns'
+
 
 class HomePage extends Component {
     constructor(props) {
@@ -11,16 +13,20 @@ class HomePage extends Component {
         this.state = { restaurantList: [], nowTime };
     }
 
-    componentDidMount() {
-        restaurantApi.then((res) => {
-            const restaurantList = res.map((item, index) => <tr key={index}>
-                <td>{index}</td>
-                <td>{item.name}</td>
-                <td>{item.time}</td>
-            </tr>)
-            this.setState({ restaurantList });
-        })
-    }
+    // componentDidMount() {
+    //     restaurantApi.then((res) => {
+    //         const restaurantList = res.map(item => <tr key={item.id}>
+    //             <td>{item.id}</td>
+    //             <td>{item.name}</td>
+    //             <td>{item.category}</td>
+    //             <td>{item.address}</td>
+    //             <td>{item.phone}</td>
+    //             <td>{item.site}</td>
+    //             <td>{item.notes}</td>
+    //         </tr>)
+    //         this.setState({ restaurantList });
+    //     })
+    // }
 
     render() {
         return (
@@ -33,11 +39,15 @@ class HomePage extends Component {
                         <tr>
                             <th>#</th>
                             <th>Name</th>
-                            <th>Open Time</th>
+                            <th>Category</th>
+                            <th>Address</th>
+                            <th>Phone</th>
+                            <th>Site</th>
+                            <th>Notes</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {this.state.restaurantList}
+                        <Columns />
                     </tbody>
                 </Table>
             </div>
