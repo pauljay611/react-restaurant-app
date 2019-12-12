@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
-import reducers from './reducers';
+import { createStore, applyMiddleware } from 'redux';
+import { rootReducer, rootEpic } from './reducers';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { createEpicMiddleware } from 'redux-observable';
+
+
 // lib/rxjs-extentions.js
 
 // Observable class extensions
@@ -23,11 +26,16 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/mapTo';
 
+const epicMiddleware = createEpicMiddleware();
 
 //create the redux store
 const store = createStore(
-    reducers,
+    rootReducer,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+    applyMiddleware(epicMiddleware)
 );
+
+epicMiddleware.run(rootEpic);
 
 ReactDOM.render(
     <Provider store={store}>
