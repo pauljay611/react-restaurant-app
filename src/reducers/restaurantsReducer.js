@@ -1,4 +1,4 @@
-import { FETCH_RESTAURANT_SUCCESS, FETCH_RESTAURANT_ERROR } from './actionTypes';
+import { FETCH_RESTAURANT_SUCCESS, FETCH_RESTAURANT_ERROR } from './actionType';
 
 const initialState = {
     restaurants: []
@@ -14,7 +14,7 @@ const restaurantsReducer = (state = initialState, action) => {
         case FETCH_RESTAURANT_ERROR:
             return {
                 ...state,
-                fetchRestaurantError: action.restaurants,
+                fetchRestaurantError: true,
             };
         default:
             return state

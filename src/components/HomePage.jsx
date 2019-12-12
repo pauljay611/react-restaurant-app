@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Table } from 'react-bootstrap';
-import Columns from './Columns'
-
+import RestaurantList from './RestaurantList'
 
 class HomePage extends Component {
     constructor(props) {
@@ -11,7 +10,6 @@ class HomePage extends Component {
         const nowTime = `${dateObj.getFullYear()}/${dateObj.getMonth() + 1}/${dateObj.getDate()}  ${dateObj.getHours()}:${dateObj.getMinutes()} ${dayArray[dateObj.getDay() - 1]}`
         this.state = { restaurantList: [], nowTime };
     }
-
     render() {
         return (
             <div>
@@ -31,7 +29,7 @@ class HomePage extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        <Columns />
+                        <RestaurantList />
                     </tbody>
                 </Table>
             </div>

@@ -1,14 +1,19 @@
 import RestaurantList from "./component";
 import { connect } from "react-redux";
+import { bindActionCreators } from 'redux';
+import { fetchRestaurant } from '../../actions/restaurantAction'
 
 const mapStateToProps = (state) => {
-
-    const restaurants = state.restaurantReducer.restaurants ? state.restaurantReducer.restaurants : [];
-
+    const restaurants = state.restaurantsReducer.restaurants;
     return {
         restaurants
     };
-
 };
 
-export default connect(mapStateToProps)(RestaurantList);
+const mapDispatchToProps = dispatch => {
+    return bindActionCreators({
+        fetchRestaurant
+    }, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(RestaurantList);
