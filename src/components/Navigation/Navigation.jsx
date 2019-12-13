@@ -6,9 +6,9 @@ import {
 } from "react-router-dom";
 import { Nav } from 'react-bootstrap';
 
-import Admin from './AdminPage'
-import Home from './HomePage'
-import Restaurant from './RestaurantPage'
+import Admin from '../Admin/AdminPage'
+import Home from '../Home/HomePage'
+import Restaurant from '../Restaurant/RestaurantPage'
 
 
 class Navigation extends Component {

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Table } from 'react-bootstrap';
-import RestaurantList from './RestaurantList'
+import RestaurantList from '../RestaurantList/index'
 
 class HomePage extends Component {
     constructor(props) {

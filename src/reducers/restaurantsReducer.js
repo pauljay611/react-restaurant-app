@@ -1,4 +1,4 @@
-import { FETCH_RESTAURANT_SUCCESS, FETCH_RESTAURANT_ERROR } from './actionType';
+import { FETCH_RESTAURANT_DATA_SUCCESS, FETCH_RESTAURANT_DATA_FAILED } from '../constants/index';
 
 const initialState = {
     restaurants: []
@@ -6,12 +6,12 @@ const initialState = {
 
 const restaurantsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case FETCH_RESTAURANT_SUCCESS:
+        case FETCH_RESTAURANT_DATA_SUCCESS:
             return {
                 ...state,
                 restaurants: action.restaurants,
             };
-        case FETCH_RESTAURANT_ERROR:
+        case FETCH_RESTAURANT_DATA_FAILED:
             return {
                 ...state,
                 fetchRestaurantError: true,

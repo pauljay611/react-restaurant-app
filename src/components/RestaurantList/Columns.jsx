@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import restaurantApi from '../api/index'
+import restaurantApi from '../../api/index'
 
 class Colummns extends Component {
     constructor(props) {

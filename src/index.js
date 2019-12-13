@@ -1,30 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
-import { rootReducer, rootEpic } from './reducers';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { createEpicMiddleware } from 'redux-observable';
 
+import * as serviceWorker from './serviceWorker';
+import './index.css';
+import App from './App';
 
-// lib/rxjs-extentions.js
+/**
+ * Redux store setup
+ */
+import { rootReducer } from "./reducers";
+import epics from "./epics";
 
-// Observable class extensions
-import 'rxjs/add/observable/of';
-import 'rxjs/add/observable/throw';
-// Observable operators
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/operator/mapTo';
 
 const epicMiddleware = createEpicMiddleware();
 
@@ -35,7 +26,7 @@ const store = createStore(
     applyMiddleware(epicMiddleware)
 );
 
-epicMiddleware.run(rootEpic);
+epicMiddleware.run(epics);
 
 ReactDOM.render(
     <Provider store={store}>
