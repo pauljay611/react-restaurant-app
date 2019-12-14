@@ -14,8 +14,10 @@ export function fetchRestaurantError() {
     };
 };
 
-export function fetchRestaurant() {
-    return {
-        type: FETCH_RESTAURANT_DATA,
-    }
-}
+export const fetchRestaurant = restaurant => ({ type: FETCH_RESTAURANT_DATA, payload: restaurant });
+// export const fetchRestaurant = function (restaurant) {
+//     return {
+//         type: FETCH_RESTAURANT_DATA,
+//         payload: restaurant
+//     }
+// }

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -19,11 +19,18 @@ import epics from "./epics";
 
 const epicMiddleware = createEpicMiddleware();
 
+const composeEnhancers = (
+    window && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+) || compose;
+
+const enhancer = composeEnhancers(
+    applyMiddleware(epicMiddleware)
+);
+
 //create the redux store
 const store = createStore(
     rootReducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-    applyMiddleware(epicMiddleware)
+    enhancer,
 );
 
 epicMiddleware.run(epics);
