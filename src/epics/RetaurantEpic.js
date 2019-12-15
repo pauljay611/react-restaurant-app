@@ -1,12 +1,12 @@
 import { from, of } from 'rxjs';
 import { ofType } from 'redux-observable';
-import { switchMap, map, catchError } from 'rxjs/operators';
-import { FETCH_RESTAURANT_DATA } from '../constants/index';
+import { switchMap, map, takeUntil, debounceTime, catchError } from 'rxjs/operators';
+import { FETCH_RESTAURANT_DATA, SEARCH_RESTAURANT_DATA, CANCEL_SEARCH_RESTAURANT_DATA } from '../constants/index';
 import * as actions from "../actions";
 
-import { restaurantApi } from "../api/index";
+import { restaurantApi, searchRestaurantApi } from "../api/index";
 
-const restaurantGetEpic = (action$, store) => {
+const getRestaurantEpic = (action$, store) => {
     return action$.pipe(
         ofType(FETCH_RESTAURANT_DATA),
         switchMap((action) => {
@@ -18,6 +18,23 @@ const restaurantGetEpic = (action$, store) => {
         )
     )
 }
+
+const searchRestaurantEpic = (action$, store) => {
+    return action$.pipe(
+        ofType(SEARCH_RESTAURANT_DATA),
+        debounceTime(1000),
+        switchMap((action) => {
+            return from(searchRestaurantApi(action.payload)).pipe(
+                map(response => response.length > 0 ? actions.searchRestaurantSuccess(response) : actions.fetchRestaurantSuccess(response)),
+                takeUntil(action$.ofType(CANCEL_SEARCH_RESTAURANT_DATA)),
+                catchError(error => of(actions.searchRestaurantError(error)))
+            )
+        }
+        )
+    )
+}
+
 export default [
-    restaurantGetEpic,
+    getRestaurantEpic,
+    searchRestaurantEpic
 ];

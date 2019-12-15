@@ -4,18 +4,19 @@ import RestaurantList from '../RestaurantList/index'
 
 class HomePage extends Component {
     constructor(props) {
-        super(props);
-        const dateObj = new Date()
-        const dayArray = ['Mon', 'Tue', 'Wed', 'Thr', 'Fri', 'Sat', 'Sun']
-        const nowTime = `${dateObj.getFullYear()}/${dateObj.getMonth() + 1}/${dateObj.getDate()}  ${dateObj.getHours()}:${dateObj.getMinutes()} ${dayArray[dateObj.getDay() - 1]}`
-        this.state = { restaurantList: [], nowTime };
+        super(props)
+        this.searchRestaurants = this.searchRestaurants.bind(this)
     }
+
+    searchRestaurants(e) {
+        this.props.findRestaurant(e.target.value)
+    }
+
     render() {
         return (
             <div>
                 <h1>HomePage</h1>
-                <div className="time"><span>目前時間</span> {this.state.nowTime}</div>
-                <input type="text" placeholder="查詢餐廳" />
+                <input type="text" placeholder="查詢餐廳" onChange={this.searchRestaurants} />
                 <Table striped bordered hover>
                     <thead>
                         <tr>

@@ -1,22 +1,42 @@
-import { FETCH_RESTAURANT_DATA_SUCCESS, FETCH_RESTAURANT_DATA_FAILED, FETCH_RESTAURANT_DATA } from '../constants/index';
+import * as actions from '../constants/index';
 
+export function fetchRestaurant(restaurant) {
+    return {
+        type: actions.FETCH_RESTAURANT_DATA,
+        payload: restaurant
+    }
+}
 
 export function fetchRestaurantSuccess(restaurants) {
     return {
-        type: FETCH_RESTAURANT_DATA_SUCCESS,
+        type: actions.FETCH_RESTAURANT_DATA_SUCCESS,
         restaurants
     };
 };
 
 export function fetchRestaurantError() {
     return {
-        type: FETCH_RESTAURANT_DATA_FAILED,
+        type: actions.FETCH_RESTAURANT_DATA_FAILED,
     };
 };
 
-export function fetchRestaurant(restaurant) {
+
+export function searchRestaurant(keyword) {
     return {
-        type: FETCH_RESTAURANT_DATA,
-        payload: restaurant
+        type: actions.SEARCH_RESTAURANT_DATA,
+        payload: keyword
     }
 }
+
+export function searchRestaurantSuccess(restaurants) {
+    return {
+        type: actions.SEARCH_RESTAURANT_DATA_SUCCESS,
+        restaurants
+    };
+};
+
+export function searchRestaurantError() {
+    return {
+        type: actions.SEARCH_RESTAURANT_DATA_FAILED,
+    };
+};
