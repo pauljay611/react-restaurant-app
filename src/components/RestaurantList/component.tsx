@@ -1,14 +1,21 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
+import { IRestaurant } from '../../models/interface'
 
-class RestaurantList extends Component {
-    componentDidMount() {
-        this.props.getRestaurant('12345');
+export interface RestaurantListProps {
+    getRestaurant?: () => Function
+    restaurants?: Array<IRestaurant>
+}
+
+class RestaurantList extends Component<RestaurantListProps, {}> {
+
+    public componentDidMount() {
+        this.props.getRestaurant();
     }
 
-    render() {
+    public render() {
         const renderRestaurant = () => {
-            return this.props.restaurants.map(item => <tr key={item.id}>
+            return this.props.restaurants!.map(item => <tr key={item.id}>
                 <td>{item.id}</td>
                 <td>{item.name}</td>
                 <td>{item.category}</td>
@@ -25,10 +32,5 @@ class RestaurantList extends Component {
         )
     }
 }
-
-
-RestaurantList.propTypes = {
-    restaurants: PropTypes.array,
-};
 
 export default RestaurantList;

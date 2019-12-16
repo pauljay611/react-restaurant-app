@@ -3,8 +3,10 @@ import './App.css';
 
 import Navigation from './components/Navigation/Navigation'
 
+export interface AppProps {
+}
 
-class App extends Component {
+class App extends Component<AppProps, {}> {
   render() {
     return (
       <div className="container">

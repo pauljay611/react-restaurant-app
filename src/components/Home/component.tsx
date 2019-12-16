@@ -2,14 +2,21 @@ import React, { Component } from "react";
 import { Table } from 'react-bootstrap';
 import RestaurantList from '../RestaurantList/index'
 
-class HomePage extends Component {
-    constructor(props) {
+export interface HomePageProps {
+    findRestaurant: (payload: string) => void
+}
+
+
+class HomePage extends Component<HomePageProps> {
+    constructor(props: HomePageProps) {
         super(props)
         this.searchRestaurants = this.searchRestaurants.bind(this)
     }
 
-    searchRestaurants(e) {
-        this.props.findRestaurant(e.target.value)
+
+    searchRestaurants(e: React.FormEvent<EventTarget>): void {
+        let target = e.target as HTMLInputElement;
+        this.props.findRestaurant(target.value)
     }
 
     render() {
