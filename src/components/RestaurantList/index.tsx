@@ -11,17 +11,13 @@ type Action = ActionType<typeof actions>;
 interface OwnProps {
 }
 
-const mapStateToProps = (state: RootState) => {
-    const restaurants = state.restaurantsReducer.restaurants;
-    return {
-        restaurants
-    };
-};
+const mapStateToProps = (state: RootState) => ({
+    restaurants: state.restaurantsReducer.restaurants
+})
 
-const mapDispatchToProps = (dispatch: Dispatch<Action>, props: OwnProps) => {
-    return bindActionCreators({
+const mapDispatchToProps = (dispatch: Dispatch<Action>, props: OwnProps) =>
+    bindActionCreators({
         getRestaurant: () => actions.fetchRestaurant()
     }, dispatch);
-};
 
 export default connect(mapStateToProps, mapDispatchToProps)(RestaurantList);

@@ -11,7 +11,7 @@ import * as serviceWorker from './serviceWorker';
 import './index.css';
 import App from './App';
 
-import * as actions from './actions/index.ts'
+import * as actions from './actions/index'
 
 /**
  * Redux store setup

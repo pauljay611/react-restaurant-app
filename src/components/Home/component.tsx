@@ -14,8 +14,8 @@ class HomePage extends Component<HomePageProps> {
     }
 
 
-    searchRestaurants(e: React.FormEvent<EventTarget>): void {
-        let target = e.target as HTMLInputElement;
+    searchRestaurants(e: React.FormEvent<HTMLInputElement>): void {
+        let target = e.currentTarget;
         this.props.findRestaurant(target.value)
     }
 

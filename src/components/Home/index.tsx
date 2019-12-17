@@ -18,10 +18,9 @@ const mapStateToProps = (state: RootState) => {
     };
 };
 
-const mapDispatchToProps = (dispatch: Dispatch<Action>, props: OwnProps) => {
-    return bindActionCreators({
-        findRestaurant: (payload: string) => actions.searchRestaurant(payload)
-    }, dispatch)
-}
+const mapDispatchToProps = (dispatch: Dispatch<Action>, props: OwnProps) => bindActionCreators({
+    findRestaurant: (keyword: string) => actions.searchRestaurant(keyword)
+}, dispatch)
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage)

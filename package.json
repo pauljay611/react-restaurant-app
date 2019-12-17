@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@types/react-router-dom": "^5.1.3",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-redux": "^7.1.3",
@@ -10,7 +11,8 @@
     "redux": "^4.0.4",
     "redux-observable": "^1.2.0",
     "rxjs": "^6.5.3",
-    "rxjs-compat": "^6.5.3"
+    "rxjs-compat": "^6.5.3",
+    "typesafe-actions": "^4.0.0"
   },
   "homepage": "http://pauljay611.github.io/react-restaurant-app",
   "scripts": {
@@ -40,8 +42,8 @@
     "@types/react": "^16.9.16",
     "@types/react-dom": "^16.9.4",
     "@types/react-redux": "^7.1.5",
+    "awesome-typescript-loader": "^5.2.1",
     "gh-pages": "^2.1.1",
-    "typesafe-actions": "^5.1.0",
     "typescript": "^3.7.3"
   }
 }

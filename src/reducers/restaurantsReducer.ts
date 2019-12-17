@@ -1,36 +1,31 @@
-import * as actions from '../constants/index';
+import { ActionType, getType } from 'typesafe-actions';
+import * as actions from "../actions/index";
 import { IRestaurant } from '../models/interface'
+
+type Action = ActionType<typeof actions>;
 
 // RestaurantState interface
 export interface IRestaurantState {
-    readonly restaurants?: Array<IRestaurant>
+    restaurants?: Array<IRestaurant>
 }
 
-const initialState = {
+const initialState: IRestaurantState = {
     restaurants: []
 };
 
-const restaurantsReducer = (state = initialState, action) => {
+const restaurantsReducer = (state: IRestaurantState = initialState, action: Action): IRestaurantState => {
     switch (action.type) {
-        case actions.FETCH_RESTAURANT_DATA_SUCCESS:
+        case getType(actions.fetchRestaurantSuccess):
+            return Object.assign({}, state, { restaurants: action.payload, });
+        case getType(actions.fetchRestaurantError):
             return {
                 ...state,
-                restaurants: action.restaurants,
             };
-        case actions.FETCH_RESTAURANT_DATA_FAILED:
+        case getType(actions.searchRestaurantSuccess):
+            return Object.assign({}, state, { restaurants: action.payload, });
+        case getType(actions.searchRestaurantError):
             return {
                 ...state,
-                fetchRestaurantError: true,
-            };
-        case actions.SEARCH_RESTAURANT_DATA_SUCCESS:
-            return {
-                ...state,
-                restaurants: action.restaurants,
-            };
-        case actions.SEARCH_RESTAURANT_DATA_FAILED:
-            return {
-                ...state,
-                searchRestaurantError: true,
             };
         default:
             return state
