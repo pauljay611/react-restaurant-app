@@ -51,7 +51,7 @@ class Navigation extends Component {
             <div>
                 <Nav className="justify-content-end" activeKey="/home">
                     <Nav.Item>
-                        <Nav.Link as={Link} to="/home">Active</Nav.Link>
+                        <Nav.Link as={Link} to="/home">home</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
                         <Nav.Link as={Link} to="/admin">admin</Nav.Link>

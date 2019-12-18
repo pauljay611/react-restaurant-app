@@ -7,14 +7,15 @@ export interface RestaurantListProps {
 }
 
 class RestaurantList extends Component<RestaurantListProps, {}> {
+
     public componentDidMount() {
         this.props.getRestaurant();
     }
 
     public render() {
-        console.log(this.props.restaurants)
-        const renderRestaurant = () => {
-            return this.props.restaurants!.map(item => <tr key={item.id}>
+        if (this.props.restaurants) return (<></>)
+        const renderRestaurant = (restaurants: Array<IRestaurant>) => {
+            return restaurants!.map(item => <tr key={item.id}>
                 <td>{item.id}</td>
                 <td>{item.name}</td>
                 <td>{item.category}</td>
@@ -26,7 +27,7 @@ class RestaurantList extends Component<RestaurantListProps, {}> {
         }
         return (
             <>
-                {renderRestaurant()}
+                {renderRestaurant(this.props.restaurants!)}
             </>
         )
     }
