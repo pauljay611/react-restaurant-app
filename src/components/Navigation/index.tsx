@@ -8,15 +8,34 @@ import {
 
 import { Nav } from 'react-bootstrap';
 
+import Time from './Time'
 import Admin from '../Admin/AdminPage'
 import Home from '../Home/index'
 import Restaurant from '../Restaurant/RestaurantPage'
 
+interface NavigationState {
+    nowTime: string | undefined
+}
 
-class Navigation extends Component {
-    constructor(props) {
+interface NavigationProps {
+}
+
+interface INowTimeObj {
+    year: number
+    month: number
+    date: number
+    hours: number
+    minutes: number | string
+    day: string
+}
+
+class Navigation extends Component<NavigationProps, NavigationState> {
+
+    private timer?: number | undefined = undefined
+
+    constructor(props: NavigationProps) {
         super(props);
-        this.state = { nowTime: null, timer: null };
+        this.state = { nowTime: '' };
         this._tick = this._tick.bind(this)
     }
     componentDidMount() {
@@ -31,9 +50,9 @@ class Navigation extends Component {
     }
 
     _tick() {
-        const dateObj = new Date()
-        const _dayArray = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-        const nowTimeObj = {
+        const dateObj: Date = new Date()
+        const _dayArray: Array<string> = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+        const nowTimeObj: INowTimeObj = {
             year: dateObj.getFullYear(),
             month: dateObj.getMonth() + 1,
             date: dateObj.getDate(),
@@ -60,7 +79,7 @@ class Navigation extends Component {
                         <Nav.Link as={Link} to="/restaurant">restaurant</Nav.Link>
                     </Nav.Item>
                 </Nav>
-                <div className="time"><span>目前時間</span> {this.state.nowTime}</div>
+                <Time nowTime={this.state.nowTime} />
                 <Switch>
                     <Route exact path="/">
                         <Home />

@@ -1,5 +1,4 @@
 import React from 'react'
-// import renderer from 'react-test-renderer';
 import { render, cleanup } from '@testing-library/react'
 
 import RestaurantPage from './RestaurantPage'
@@ -13,6 +12,6 @@ describe('<Admin>', () => {
 
         // 取得 dom 並 test 該 render content
         expect(getByText('Restaurant').textContent).toBe('Restaurant');
-        expect(container.querySelector('h1').innerHTML).toBe('Restaurant');
+        expect(container.querySelector('h1')!.innerHTML).toBe('Restaurant');
     });
 })
