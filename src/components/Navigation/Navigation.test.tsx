@@ -1,12 +1,14 @@
 import React from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import { render, fireEvent, cleanup } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom';
 
 import Navigation from './index'
 
-describe('<Navigation>', () => {
+afterEach(cleanup)
 
-    it('renders navigation router', () => {
+describe('Testing <Navigation> component', () => {
+
+    it('click navigation button', () => {
         // get render Component
         const { container, getByText } = render(
             <MemoryRouter initialEntries={['/restaurant']}>

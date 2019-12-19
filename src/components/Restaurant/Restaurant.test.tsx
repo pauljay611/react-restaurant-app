@@ -3,10 +3,10 @@ import { render, cleanup } from '@testing-library/react'
 
 import RestaurantPage from './RestaurantPage'
 
-describe('<Admin>', () => {
-    it('renders restaurant component', () => {
-        // 每次測試後將 render 的 DOM 清空
-        afterEach(cleanup);
+afterEach(cleanup);
+
+describe('Testing <Restaurant> component', () => {
+    it('render restaurant component', () => {
         // render Component
         const { container, getByText } = render(<RestaurantPage />);
 

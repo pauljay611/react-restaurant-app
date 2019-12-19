@@ -23,7 +23,7 @@ class HomePage extends Component<HomePageProps> {
         return (
             <div>
                 <h1>HomePage</h1>
-                <input type="text" placeholder="查詢餐廳" onChange={this.searchRestaurants} />
+                <input data-testid="searchRestaurants" type="text" placeholder="查詢餐廳" onChange={this.searchRestaurants} />
                 <Table striped bordered hover>
                     <thead>
                         <tr>

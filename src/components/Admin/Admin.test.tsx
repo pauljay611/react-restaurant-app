@@ -3,10 +3,10 @@ import { render, cleanup } from '@testing-library/react'
 
 import Admin from './AdminPage'
 
-describe('<Admin>', () => {
+afterEach(cleanup)
+
+describe('Testing <Admin> component', () => {
     it('renders without crashing', () => {
-        // 每次測試後將 render 的 DOM 清空
-        afterEach(cleanup);
         // render Component
         const { container, } = render(<Admin />);
 

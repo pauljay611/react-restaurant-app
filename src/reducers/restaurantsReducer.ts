@@ -9,7 +9,7 @@ export interface IRestaurantState {
     restaurants?: Array<IRestaurant>
 }
 
-const initialState: IRestaurantState = {
+export const initialState: IRestaurantState = {
     restaurants: []
 };
 

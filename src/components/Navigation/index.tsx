@@ -36,11 +36,11 @@ class Navigation extends Component<NavigationProps, NavigationState> {
     constructor(props: NavigationProps) {
         super(props);
         this.state = { nowTime: '' };
-        this._tick = this._tick.bind(this)
+        this.tick = this.tick.bind(this)
     }
     componentDidMount() {
         this.timer = setInterval(
-            this._tick,
+            this.tick,
             1000
         );
     }
@@ -49,18 +49,18 @@ class Navigation extends Component<NavigationProps, NavigationState> {
         clearInterval(this.timer);
     }
 
-    _tick() {
-        const dateObj: Date = new Date()
+    tick() {
+        const _dateObj: Date = new Date()
         const _dayArray: Array<string> = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-        const nowTimeObj: INowTimeObj = {
-            year: dateObj.getFullYear(),
-            month: dateObj.getMonth() + 1,
-            date: dateObj.getDate(),
-            hours: dateObj.getHours(),
-            minutes: dateObj.getMinutes() > 9 ? dateObj.getMinutes() : '0' + dateObj.getMinutes(),
-            day: _dayArray[dateObj.getDay()]
+        const _nowTimeObj: INowTimeObj = {
+            year: _dateObj.getFullYear(),
+            month: _dateObj.getMonth() + 1,
+            date: _dateObj.getDate(),
+            hours: _dateObj.getHours(),
+            minutes: _dateObj.getMinutes() > 9 ? _dateObj.getMinutes() : '0' + _dateObj.getMinutes(),
+            day: _dayArray[_dateObj.getDay()]
         }
-        const nowTime = `${nowTimeObj.year}/${nowTimeObj.month}/${nowTimeObj.date}  ${nowTimeObj.hours}:${nowTimeObj.minutes} ${nowTimeObj.day}`
+        const nowTime = `${_nowTimeObj.year}/${_nowTimeObj.month}/${_nowTimeObj.date}  ${_nowTimeObj.hours}:${_nowTimeObj.minutes} ${_nowTimeObj.day}`
         this.setState({ nowTime })
     }
 

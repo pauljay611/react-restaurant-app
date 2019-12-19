@@ -15,7 +15,7 @@ class RestaurantList extends Component<RestaurantListProps, {}> {
     public render() {
         if (this.props.restaurants) return (<></>)
         const renderRestaurant = (restaurants: Array<IRestaurant>) => {
-            return restaurants!.map(item => <tr key={item.id}>
+            return restaurants!.map(item => <tr data-testid="getRestaurants" key={item.id}>
                 <td>{item.id}</td>
                 <td>{item.name}</td>
                 <td>{item.category}</td>
