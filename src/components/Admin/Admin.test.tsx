@@ -6,7 +6,7 @@ import Admin from './AdminPage'
 afterEach(cleanup)
 
 describe('Testing <Admin> component', () => {
-    it('renders without crashing', () => {
+    it('renders admin component', () => {
         // render Component
         const { container, } = render(<Admin />);
 
