@@ -31,7 +31,7 @@ interface INowTimeObj {
 
 class Navigation extends Component<NavigationProps, NavigationState> {
 
-    private timer?: number | undefined = undefined
+    private timer?: number = undefined
 
     constructor(props: NavigationProps) {
         super(props);
@@ -39,7 +39,7 @@ class Navigation extends Component<NavigationProps, NavigationState> {
         this.tick = this.tick.bind(this)
     }
     componentDidMount() {
-        this.timer = setInterval(
+        this.timer = window.setInterval(
             this.tick,
             1000
         );

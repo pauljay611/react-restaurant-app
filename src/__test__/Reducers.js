@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { render, fireEvent, cleanup, waitForElement } from '@testing-library/react'
 import { createStore } from 'redux'
-import { Provider, connect } from 'react-redux'
+import { Provider } from 'react-redux'
 import RestaurantList from '../components/RestaurantList/index'
 import Home from '../components/Home/index'
 import * as Api from "../api/index";
@@ -23,7 +23,7 @@ describe('Testing restaurant reducers', () => {
     const spyFn = jest.spyOn(Api, 'restaurantApi')
 
     it('render with get restaurant action', async () => {
-        const { getByTestId, getByText, container, getByRole } = renderWithRedux(
+        const { getByTestId } = renderWithRedux(
             <RestaurantList />,
         )
         await waitForElement(() => getByTestId('getRestaurants'))
@@ -33,7 +33,7 @@ describe('Testing restaurant reducers', () => {
 
     it('render with search restaurant action', async () => {
         const searchRestaurants = jest.fn()
-        const { getByTestId, getByText, unmount, container } = renderWithRedux(
+        const { getByTestId } = renderWithRedux(
             <input data-testid="searchRestaurants" type="text" placeholder="查詢餐廳" onChange={searchRestaurants} />,
         )
         await fireEvent.change(getByTestId('searchRestaurants'))

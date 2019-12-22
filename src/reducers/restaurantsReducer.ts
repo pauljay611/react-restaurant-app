@@ -7,26 +7,26 @@ type Action = ActionType<typeof actions>;
 // RestaurantState interface
 export interface IRestaurantState {
     restaurants?: Array<IRestaurant>
+    loading: boolean
 }
 
 export const initialState: IRestaurantState = {
-    restaurants: []
+    restaurants: [],
+    loading: false
 };
 
 const restaurantsReducer = (state: IRestaurantState = initialState, action: Action): IRestaurantState => {
     switch (action.type) {
+        case getType(actions.fetchRestaurant):
+            return Object.assign({}, state, { loading: true, });
         case getType(actions.fetchRestaurantSuccess):
-            return Object.assign({}, state, { restaurants: action.payload, });
+            return Object.assign({}, state, { restaurants: action.payload, loading: false });
         case getType(actions.fetchRestaurantError):
-            return {
-                ...state,
-            };
+            return Object.assign({}, state);
         case getType(actions.searchRestaurantSuccess):
             return Object.assign({}, state, { restaurants: action.payload, });
         case getType(actions.searchRestaurantError):
-            return {
-                ...state,
-            };
+            return Object.assign({}, state);
         default:
             return state
     }

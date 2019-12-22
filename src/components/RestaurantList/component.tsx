@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { IRestaurant } from '../../models/interface'
+import Loading from '../Common/Loading'
 
 export interface RestaurantListProps {
     getRestaurant: () => void
     restaurants?: Array<IRestaurant>
+    loading: boolean
 }
 
 class RestaurantList extends Component<RestaurantListProps, {}> {
@@ -13,7 +15,10 @@ class RestaurantList extends Component<RestaurantListProps, {}> {
     }
 
     public render() {
-        if (this.props.restaurants) return (<></>)
+        const colNumber: number = 7
+        if (this.props.loading) {
+            return (<Loading colNumber={colNumber} />)
+        }
         const renderRestaurant = (restaurants: Array<IRestaurant>) => {
             return restaurants!.map(item => <tr data-testid="getRestaurants" key={item.id}>
                 <td>{item.id}</td>
@@ -30,6 +35,7 @@ class RestaurantList extends Component<RestaurantListProps, {}> {
                 {renderRestaurant(this.props.restaurants!)}
             </>
         )
+
     }
 }
 

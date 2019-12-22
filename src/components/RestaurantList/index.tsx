@@ -12,7 +12,8 @@ interface OwnProps {
 }
 
 const mapStateToProps = (state: RootState) => ({
-    restaurants: state.restaurantsReducer.restaurants
+    restaurants: state.restaurantsReducer.restaurants,
+    loading: state.restaurantsReducer.loading
 })
 
 const mapDispatchToProps = (dispatch: Dispatch<Action>, props: OwnProps) =>
