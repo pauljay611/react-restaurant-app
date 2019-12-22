@@ -4,7 +4,6 @@ import { IRestaurant } from '../models/interface'
 
 type Action = ActionType<typeof actions>;
 
-// RestaurantState interface
 export interface IRestaurantState {
     restaurants?: Array<IRestaurant>
     loading: boolean
@@ -22,10 +21,14 @@ const restaurantsReducer = (state: IRestaurantState = initialState, action: Acti
         case getType(actions.fetchRestaurantSuccess):
             return Object.assign({}, state, { restaurants: action.payload, loading: false });
         case getType(actions.fetchRestaurantError):
+            console.error(action.payload.message)
             return Object.assign({}, state);
+        case getType(actions.searchRestaurant):
+            return Object.assign({}, state, { loading: true, });
         case getType(actions.searchRestaurantSuccess):
-            return Object.assign({}, state, { restaurants: action.payload, });
+            return Object.assign({}, state, { restaurants: action.payload, loading: false });
         case getType(actions.searchRestaurantError):
+            console.error(action.payload.message)
             return Object.assign({}, state);
         default:
             return state

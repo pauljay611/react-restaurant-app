@@ -17,6 +17,6 @@ export const fetchRestaurantError = createAction(FETCH_RESTAURANT_DATA_FAILED, r
 
 export const searchRestaurant = createAction(SEARCH_RESTAURANT_DATA, resolve => (keyword: string) => resolve(keyword))
 
-export const searchRestaurantSuccess = createAction(SEARCH_RESTAURANT_DATA_SUCCESS, resolve => (restaurants: string) => resolve(restaurants))
+export const searchRestaurantSuccess = createAction(SEARCH_RESTAURANT_DATA_SUCCESS, resolve => (keyword: string) => resolve(keyword))
 
 export const searchRestaurantError = createAction(SEARCH_RESTAURANT_DATA_FAILED, resolve => (error: Error) => resolve(error))

@@ -1,9 +1,8 @@
 import { from, of } from 'rxjs';
 import { Epic, } from 'redux-observable';
 import { ActionType, isActionOf } from 'typesafe-actions';
-import { switchMap, filter, map, takeUntil, debounceTime, catchError } from 'rxjs/operators';
+import { switchMap, filter, map, debounceTime, catchError } from 'rxjs/operators';
 
-import { CANCEL_SEARCH_RESTAURANT_DATA } from '../constants/index';
 import * as actions from "../actions";
 import { restaurantApi, searchRestaurantApi } from "../api/index";
 import { RootState } from "../reducers";
@@ -28,7 +27,6 @@ const searchRestaurantEpic: Epic<Action, Action, RootState> = (action$, store) =
         switchMap((action) =>
             from(searchRestaurantApi(action.payload)).pipe(
                 map(response => response.length > 0 ? actions.searchRestaurantSuccess(response) : actions.fetchRestaurantSuccess(response)),
-                takeUntil(action$.ofType(CANCEL_SEARCH_RESTAURANT_DATA)),
                 catchError(error => of(actions.searchRestaurantError(error)))
             )
         )
