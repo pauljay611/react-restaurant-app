@@ -24,7 +24,7 @@ class HomePage extends Component<HomePageProps> {
         return (
             <div>
                 <H1>HomePage</H1>
-                <Input data-testid="searchRestaurants" className="searchInput" type="text" placeholder="查詢餐廳" onChange={this.searchRestaurants} />
+                <Input className="searchInput" type="text" placeholder="查詢餐廳" onChange={this.searchRestaurants} />
                 <Table>
                     <thead>
                         <tr>

@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from '../../__test__/setup';
 
 import Home from './component';
-
+import { Input } from './style'
 
 describe('testing <Home> component', () => {
     const findRestaurant: (payload: string) => void = jest.fn()
@@ -21,7 +21,7 @@ describe('testing <Home> component', () => {
             }
         }
         wrapper.setProps({ findRestaurant: findRestaurant });
-        wrapper.find('input').simulate('change', event)
+        wrapper.find(Input).simulate('change', event)
         expect(findRestaurant).toHaveBeenCalledTimes(1);
     });
 
