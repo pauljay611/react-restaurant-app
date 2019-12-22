@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+import { H1 } from '../Style/Typography'
 
 class AdminPage extends Component {
     render() {
         return (
             <div>
-                <h1>AdminPage</h1>
+                <H1>AdminPage</H1>
             </div>
         )
     }

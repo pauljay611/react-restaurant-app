@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { Table } from 'react-bootstrap';
 import RestaurantList from '../RestaurantList/index'
+import { H1 } from '../Style/Typography'
+import { Input, Table } from './style'
 
 export interface HomePageProps {
     findRestaurant: (payload: string) => void
@@ -22,9 +23,9 @@ class HomePage extends Component<HomePageProps> {
     render() {
         return (
             <div>
-                <h1>HomePage</h1>
-                <input data-testid="searchRestaurants" className="searchInput" type="text" placeholder="查詢餐廳" onChange={this.searchRestaurants} />
-                <Table striped bordered hover>
+                <H1>HomePage</H1>
+                <Input data-testid="searchRestaurants" className="searchInput" type="text" placeholder="查詢餐廳" onChange={this.searchRestaurants} />
+                <Table>
                     <thead>
                         <tr>
                             <th>#</th>

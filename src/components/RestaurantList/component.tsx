@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { IRestaurant } from '../../models/interface'
-import Loading from '../Common/Loading'
+import Loading from './Loading'
 
 export interface RestaurantListProps {
     getRestaurant: () => void

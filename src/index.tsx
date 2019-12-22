@@ -8,7 +8,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { createEpicMiddleware } from 'redux-observable';
 
 import * as serviceWorker from './serviceWorker';
-import './index.css';
 import App from './App';
 
 import * as actions from './actions/index'

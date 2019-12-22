@@ -1,4 +1,5 @@
 import * as React from 'react'
+import styled from 'styled-components';
 
 interface LoadingProps {
     colNumber: number
@@ -6,15 +7,16 @@ interface LoadingProps {
 
 const Loading = (props: LoadingProps) => {
     const colSpan: number = props.colNumber
-    const style: React.CSSProperties = {
-        textAlign: 'center'
-    }
     return <>
         <tr>
-            <td colSpan={colSpan} style={style}>Loading......</td>
+            <Column colSpan={colSpan} >Loading......</Column>
         </tr>
-
     </>
 }
+
+const Column = styled.td`
+  text-align: center;
+`
+
 
 export default Loading

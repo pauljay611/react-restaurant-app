@@ -6,12 +6,13 @@ import {
 } from "react-router-dom";
 
 
-import { Nav } from 'react-bootstrap';
+//import { Nav } from 'react-bootstrap';
 
 import Time from './Time'
 import Admin from '../Admin/AdminPage'
 import Home from '../Home/index'
 import Restaurant from '../Restaurant/RestaurantPage'
+import { Nav, NavItem } from './style'
 
 interface NavigationState {
     nowTime: string | undefined
@@ -64,20 +65,13 @@ class Navigation extends Component<NavigationProps, NavigationState> {
         this.setState({ nowTime })
     }
 
-
     render() {
         return (
             <div>
-                <Nav className="justify-content-end" activeKey="/home">
-                    <Nav.Item>
-                        <Nav.Link as={Link} to="/home">home</Nav.Link>
-                    </Nav.Item>
-                    <Nav.Item>
-                        <Nav.Link as={Link} to="/admin">admin</Nav.Link>
-                    </Nav.Item>
-                    <Nav.Item>
-                        <Nav.Link as={Link} to="/restaurant">restaurant</Nav.Link>
-                    </Nav.Item>
+                <Nav>
+                    <NavItem as={Link} to="/home">home</NavItem>
+                    <NavItem as={Link} to="/admin">admin</NavItem>
+                    <NavItem as={Link} to="/restaurant">restaurant</NavItem>
                 </Nav>
                 <Time nowTime={this.state.nowTime} />
                 <Switch>

@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+import { H1 } from '../Style/Typography'
 
 class RestaurantPage extends Component {
     render() {
         return (
             <div>
-                <h1>Restaurant</h1>
+                <H1>Restaurant</H1>
             </div>
         )
     }
