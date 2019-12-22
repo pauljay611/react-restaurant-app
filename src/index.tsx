@@ -4,7 +4,6 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { ActionType } from "typesafe-actions";
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { createEpicMiddleware } from 'redux-observable';
 
 import * as serviceWorker from './serviceWorker';
